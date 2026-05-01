@@ -139,7 +139,7 @@ body {
 .header-content {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	width: 100%;
 	max-width: 600px;
 	margin: 0 auto;
@@ -160,6 +160,26 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: var(--spacing-sm);
+}
+
+.install-btn {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: none;
+	border-radius: 50%;
+	background: var(--ios-blue);
+	color: white;
+	cursor: pointer;
+	transition: all var(--transition-base);
+	flex-shrink: 0;
+}
+
+.install-btn:active {
+	transform: scale(0.92);
+	background: var(--ios-blue-dark);
 }
 
 .avatar {

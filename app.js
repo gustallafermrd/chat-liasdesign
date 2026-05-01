@@ -1,10 +1,35 @@
 import "./style.css";
 
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+	e.preventDefault();
+	deferredPrompt = e;
+	if (installBtn) installBtn.style.display = "flex";
+});
+
 if ("serviceWorker" in navigator) {
-	window.addEventListener("load", () => {
-		navigator.serviceWorker.register("/sw.js");
+	window.addEventListener("load", async () => {
+		try {
+			const registration = await navigator.serviceWorker.register("/sw.js");
+			registration.addEventListener("updatefound", () => {
+				const newWorker = registration.installing;
+				newWorker.addEventListener("statechange", () => {
+					if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+						showToast("Nueva versión disponible. Recarga para actualizar.", "warning");
+					}
+				});
+			});
+		} catch (err) {
+			console.error("SW registration failed:", err);
+		}
 	});
 }
+
+window.addEventListener("appinstalled", () => {
+	deferredPrompt = null;
+	showToast("¡App instalada correctamente!", "success");
+});
 
 const N8N_WEBHOOK_URL = "https://n8n.srv1334062.hstgr.cloud/webhook/chatbot";
 
@@ -12,10 +37,24 @@ const chatContainer = document.getElementById("chat-container");
 const messageInput = document.getElementById("message-input");
 const sendBtn = document.getElementById("send-btn");
 const fileInput = document.getElementById("file-input");
+const installBtn = document.getElementById("install-btn");
 
 let isProcessing = false;
 let typingIndicatorElement = null;
 let lastFileName = null;
+
+if (installBtn) {
+	installBtn.addEventListener("click", async () => {
+		if (!deferredPrompt) return;
+		deferredPrompt.prompt();
+		const { outcome } = await deferredPrompt.userChoice;
+		if (outcome === "accepted") {
+			showToast("¡App instalada!", "success");
+		}
+		deferredPrompt = null;
+		installBtn.style.display = "none";
+	});
+}
 
 async function init() {
 	setupEventListeners();
