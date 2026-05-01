@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+		/>
+		<meta
+			name="description"
+			content="Chat con Lias Design - Genera copies creativos para tus fotografías"
+		/>
+		<meta name="theme-color" content="#007aff" />
+		<meta name="color-scheme" content="light dark" />
+
+		<title>Lias Design Chat - Generador de Copies</title>
+		<meta
+			name="description"
+			content="Chat inteligente para generar copies creativos para tus fotografías"
+		/>
+
+		<!-- PWA Meta Tags -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+		<meta name="apple-mobile-web-app-title" content="Lias Design" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="apple-touch-icon" href="/icon-192.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+
+		<!-- Preload fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Preload critical assets -->
+		<link rel="preload" href="/icon-192.png" as="image" />
+
+		<!-- Styles handled by Vite via app.js -->
+	</head>
+
+	<body>
+		<!-- Skip to main content for accessibility -->
+		<a href="#chat-container" class="skip-link">Ir al contenido principal</a>
+
+		<header class="ios-header" role="banner">
+			<div class="header-content">
+				<div class="contact-info">
+					<div class="avatar" aria-label="Avatar de Lias Design">
+						n8n
+						<span class="status-indicator" aria-label="En línea"></span>
+					</div>
+					<div class="header-title">Lias Design</div>
+				</div>
+			</div>
+		</header>
+
+		<main
+			class="chat-container"
+			id="chat-container"
+			role="main"
+			aria-label="Conversación"
+		>
+			<!-- Welcome message -->
+			<div
+				class="message-group receiver"
+				role="article"
+				aria-label="Mensaje de bienvenida"
+			>
+				<div class="bubble">¡Hola! 👋 Soy tu asistente de copywriting. Envíame una fotografía y te ayudaré a generar los mejores copies para ella.</div>
+				<div class="message-timestamp" aria-label="Enviado a las 00:00">
+					Ahora
+				</div>
+			</div>
+
+			<!-- Quick actions -->
+			<div class="quick-actions" role="region" aria-label="Acciones rápidas">
+				<button
+					class="quick-action-btn"
+					data-prompt="Quiero un copy para Instagram"
+					type="button"
+				>
+					Copy para Instagram
+				</button>
+				<button
+					class="quick-action-btn"
+					data-prompt="Quiero un copy para Facebook"
+					type="button"
+				>
+					Copy para Facebook
+				</button>
+				<button
+					class="quick-action-btn"
+					data-prompt="Quiero ideas creativas"
+					type="button"
+				>
+					Ideas creativas
+				</button>
+			</div>
+		</main>
+
+		<div class="ios-input-bar" role="form" aria-label="Enviar mensaje">
+			<input
+				type="file"
+				id="file-input"
+				accept="image/*,video/*"
+				capture="environment"
+				aria-label="Adjuntar imagen o video"
+			/>
+
+			<button
+				type="button"
+				class="camera-btn"
+				aria-label="Tomar foto"
+				onclick="document.getElementById('file-input').click()"
+			>
+				<svg
+					width="26"
+					height="26"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path
+						d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+					></path>
+					<circle cx="12" cy="13" r="4"></circle>
+				</svg>
+			</button>
+
+			<div class="text-input-wrapper">
+				<textarea
+					class="text-input"
+					id="message-input"
+					placeholder="Escribe un mensaje..."
+					rows="1"
+					aria-label="Escribe tu mensaje"
+					maxlength="1000"
+				></textarea>
+			</div>
+
+			<button
+				class="send-btn"
+				id="send-btn"
+				disabled
+				aria-label="Enviar mensaje"
+				type="button"
+			>
+				<svg
+					width="18"
+					height="18"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="3"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<line x1="12" y1="19" x2="12" y2="5"></line>
+					<polyline points="5 12 12 5 19 12"></polyline>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Toast container -->
+		<div
+			id="toast-container"
+			class="toast-container"
+			aria-live="polite"
+			aria-atomic="true"
+		></div>
+
+		<script type="module" src="./app.js"></script>
+	</body>
+</html>

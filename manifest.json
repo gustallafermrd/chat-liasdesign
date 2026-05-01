@@ -1,0 +1,21 @@
+{
+  "name": "n8n Chat Assistant",
+  "short_name": "n8n Chat",
+  "description": "iOS Style Chat PWA for n8n Integration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007aff",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

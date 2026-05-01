@@ -1,0 +1,28 @@
+{
+	"permissions": {
+		"allow": [
+			"mcp__n8n-mcp__n8n_health_check",
+			"mcp__n8n-mcp__n8n_list_workflows",
+			"Skill(update-config)",
+			"Read(//Users/gus/.claude/**)",
+			"mcp__mcp-lias__n8n_list_workflows",
+			"mcp__mcp-lias__n8n_health_check",
+			"mcp__mcp-openlias__n8n_list_workflows",
+			"mcp__mcp-openlias__n8n_health_check"
+		]
+	},
+	"enabledMcpjsonServers": ["n8n-mcp", "mcp-lias", "mcp-openlias"],
+	"mcpServers": {
+		"n8n-liasdesignchat": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"supergateway",
+				"--streamableHttp",
+				"https://n8n.srv1334062.hstgr.cloud/mcp-server/http",
+				"--header",
+				"authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMDhkMDI1YS1iODg4LTRmYWYtODFkMS01M2IxY2NkYjg4MDUiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6IjRlYWU1ZTAxLTk0ZjQtNGJkYy1iMGIwLTJjNjc3OTU2YjE3ZSIsImlhdCI6MTc3NzQ4MzE4NX0.EiKMbaKRATQ5dDL3BOBBkdIvjL68PNOuOhSPqFi-egE"
+			]
+		}
+	}
+}
